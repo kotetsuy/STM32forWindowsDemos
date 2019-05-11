@@ -38,7 +38,7 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+#define ArraySiz(a) (sizeof((a))/sizeof((a)[0]))
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -97,6 +97,7 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
+#if 0
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
@@ -105,6 +106,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4);
+#endif
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,6 +116,19 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, (int32_t)(arm_sin_f32(thetas[0])+1.0f)*(1999.0f)/2.0f);
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, (int32_t)(arm_sin_f32(thetas[1])+1.0f)*(1999.0f)/2.0f);
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, (int32_t)(arm_sin_f32(thetas[2])+1.0f)*(1999.0f)/2.0f);
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, (int32_t)(arm_sin_f32(thetas[3])+1.0f)*(1999.0f)/2.0f);
+	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, (int32_t)(arm_sin_f32(thetas[4])+1.0f)*(1999.0f)/2.0f);
+	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_2, (int32_t)(arm_sin_f32(thetas[5])+1.0f)*(1999.0f)/2.0f);
+	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_3, (int32_t)(arm_sin_f32(thetas[6])+1.0f)*(1999.0f)/2.0f);
+	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_4, (int32_t)(arm_sin_f32(thetas[7])+1.0f)*(1999.0f)/2.0f);
+	for (int32_t i = 0; i < ArraySiz(thetas); i++) {
+		thetas[i] += 2.0f*PI*10.0f/1000.0f;
+		thetas[i] = (thetas[i] >= 2.0f*PI) ? thetas[i] - 2.0f*PI : thetas[i];
+	}
+	HAL_Delay(10);
   }
   /* USER CODE END 3 */
 }
