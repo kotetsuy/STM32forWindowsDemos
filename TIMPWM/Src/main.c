@@ -97,7 +97,6 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-#if 0
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
@@ -106,7 +105,6 @@ int main(void)
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4);
-#endif
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -116,17 +114,34 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, (int32_t)(arm_sin_f32(thetas[0])+1.0f)*(1999.0f)/2.0f);
-	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, (int32_t)(arm_sin_f32(thetas[1])+1.0f)*(1999.0f)/2.0f);
-	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, (int32_t)(arm_sin_f32(thetas[2])+1.0f)*(1999.0f)/2.0f);
-	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, (int32_t)(arm_sin_f32(thetas[3])+1.0f)*(1999.0f)/2.0f);
-	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, (int32_t)(arm_sin_f32(thetas[4])+1.0f)*(1999.0f)/2.0f);
-	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_2, (int32_t)(arm_sin_f32(thetas[5])+1.0f)*(1999.0f)/2.0f);
-	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_3, (int32_t)(arm_sin_f32(thetas[6])+1.0f)*(1999.0f)/2.0f);
-	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_4, (int32_t)(arm_sin_f32(thetas[7])+1.0f)*(1999.0f)/2.0f);
+	int32_t cc;
+	cc = (int32_t)(arm_sin_f32(thetas[0])*1999.0f);
+	cc = (cc < 0) ? 0 : cc;
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, cc);
+	cc = (int32_t)(arm_sin_f32(thetas[1])*1999.0f);
+	cc = (cc < 0) ? 0 : cc;
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, cc);
+	cc = (int32_t)(arm_sin_f32(thetas[2])*1999.0f);
+	cc = (cc < 0) ? 0 : cc;
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, cc);
+	cc = (int32_t)(arm_sin_f32(thetas[3])*1999.0f);
+	cc = (cc < 0) ? 0 : cc;
+	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, cc);
+	cc = (int32_t)(arm_sin_f32(thetas[4])*1999.0f);
+	cc = (cc < 0) ? 0 : cc;
+	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, cc);
+	cc = (int32_t)(arm_sin_f32(thetas[5])*1999.0f);
+	cc = (cc < 0) ? 0 : cc;
+	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_2, cc);
+	cc = (int32_t)(arm_sin_f32(thetas[6])*1999.0f);
+	cc = (cc < 0) ? 0 : cc;
+	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_3, cc);
+	cc = (int32_t)(arm_sin_f32(thetas[7])*1999.0f);
+	cc = (cc < 0) ? 0 : cc;
+	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_4, cc);
 	for (int32_t i = 0; i < ArraySiz(thetas); i++) {
 		thetas[i] += 2.0f*PI*10.0f/1000.0f;
-		thetas[i] = (thetas[i] >= 2.0f*PI) ? thetas[i] - 2.0f*PI : thetas[i];
+		thetas[i] = (thetas[i]>=2.0f*PI) ? thetas[i]-2.0f*PI : thetas[i];
 	}
 	HAL_Delay(10);
   }
@@ -196,7 +211,7 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 42000;
+  htim3.Init.Prescaler = 42;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 1999;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -267,7 +282,7 @@ static void MX_TIM4_Init(void)
 
   /* USER CODE END TIM4_Init 1 */
   htim4.Instance = TIM4;
-  htim4.Init.Prescaler = 42000;
+  htim4.Init.Prescaler = 42;
   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim4.Init.Period = 1999;
   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
