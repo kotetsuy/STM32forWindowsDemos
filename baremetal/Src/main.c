@@ -146,7 +146,7 @@ int main(void)
 		  break;
 	  case ADC_TRIGGER:
 		  adcValue = HAL_ADC_GetValue(&hadc1);
-		  HAL_ADC_Stop(&hadc1);
+		  HAL_ADC_Stop_IT(&hadc1);
 		  sprintf((char *)UARTBuf, "%ld\n", adcValue);
 		  UARTState = UART_START;
 		  ADCState = ADC_IDLE;
