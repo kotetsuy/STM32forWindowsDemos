@@ -23,7 +23,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ymodem.h"
-#include "flash_if.h"
 #include <string.h>
 /* USER CODE END Includes */
 
@@ -99,8 +98,6 @@ int main(void)
 	  if (HAL_FLASH_Unlock() != HAL_OK) {
 		  goto BLINK;
 	  }
-	  // Erase flash
-      FLASH_If_Erase(APPADDR);
 	  // Display message
 	  HAL_UART_Transmit(&huart2, start, strlen((const char *)start), 1000);
 	  // Start YMODEM receive
@@ -114,6 +111,8 @@ int main(void)
       fp = (FUNCPTR)pc;
       /* Initialize user application's Stack Pointer */
       __set_MSP(*(__IO uint32_t*) APPADDR);
+      // Change VTOR
+      SCB->VTOR = APPADDR;
       fp();
       // Normal Application should enable interrupt at first line in main()
   }

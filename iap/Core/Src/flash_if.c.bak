@@ -89,7 +89,7 @@ uint32_t FLASH_If_Erase(uint32_t StartSector)
   */
 uint32_t FLASH_If_Write(__IO uint32_t* FlashAddress, uint32_t* Data ,uint16_t DataLength)
 {
-	uint32_t addr = (uint32_t)*FlashAddress;
+	uint32_t addr = (uint32_t)FlashAddress;
 
 	while (DataLength > 0) {
 		if (HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, addr, *Data) != HAL_OK) {
@@ -99,7 +99,6 @@ uint32_t FLASH_If_Write(__IO uint32_t* FlashAddress, uint32_t* Data ,uint16_t Da
 		Data++;
 		DataLength--;
 	}
-	*FlashAddress = addr;
 	return 0;
 }
 
