@@ -312,38 +312,38 @@ __ALIGN_BEGIN static uint8_t USBD_HID_DeviceQualifierDesc[USB_LEN_DEV_QUALIFIER_
 
 __ALIGN_BEGIN static uint8_t HID_MOUSE_ReportDesc[HID_MOUSE_REPORT_DESC_SIZE] __ALIGN_END =
 {
-		  0x05, 0x01,   // USAGE_PAGE (Generic Desktop)
-		  0x09, 0x06,   // USAGE (Keyboard)
-		  0xa1, 0x01,   // COLLECTION (Application)
-		  0x75, 0x01,   //   REPORT_SIZE (1)
-		  0x95, 0x08,   //   REPORT_COUNT (8) #10
-		  0x05, 0x07,   //   USAGE_PAGE (Key Codes)
-		  0x19, 0xe0,   //   USAGE_MINIMUM (224)
-		  0x29, 0xe7,   //   USAGE_MAXIMUM (231)
-		  0x15, 0x00,   //   LOGICAL_MINIMUM (0)
-		  0x25, 0x01,   //   LOGICAL_MAXIMUM (1) #20
-		  0x81, 0x02,   //   INPUT (Data,Variable,Absolute)
-		  0x95, 0x01,   //   REPORT_COUNT (1)
-		  0x75, 0x08,   //   REPORT_SIZE (8)
-		  0x81, 0x03,   //   INPUT (Constant)
-		  0x95, 0x05,   //   REPORT_COUNT (5) #30
-		  0x75, 0x01,   //   REPORT_SIZE (1)
-		  0x05, 0x08,   //   USAGE_PAGE (LEDs)
-		  0x19, 0x01,   //   USAGE_MINIMUM (1)
-		  0x29, 0x05,   //   USAGE_MAXIMUM (5)
-		  0x91, 0x02,   //   OUTPUT (Data,Variable,Absolute) #40
-		  0x95, 0x01,   //   REPORT_COUNT (1)
-		  0x75, 0x03,   //   REPORT_SIZE (3)
-		  0x91, 0x03,   //   OUTPUT (Constant)
-		  0x95, 0x06,   //   REPORT_COUNT (6)
-		  0x75, 0x08,   //   REPORT_SIZE (8) #50
-		  0x15, 0x00,   //   LOGICAL_MINIMUM (0)
-		  0x25, 0xff,   //   LOGICAL_MAXIMUM (255)
-		  0x05, 0x07,   //   USAGE_PAGE (Key Codes)
-		  0x19, 0x00,   //   USAGE_MINIMUM (0)
-		  0x29, 0xff,   //   USAGE_MAXIMUM (255) #60
-		  0x81, 0x00,   //   INPUT (Data,Array)
-		  0xc0,         // END_COLLECTION #63
+		0x05, 0x01, // USAGE_PAGE (Generic Desktop)
+		0x09, 0x06, // USAGE (Keyboard)
+		0xa1, 0x01, // COLLECTION (Application)
+		0x75, 0x01, // REPORT_SIZE (1)
+		0x95, 0x08, // REPORT_COUNT (8) #10
+		0x05, 0x07, // USAGE_PAGE (Key Codes)
+		0x19, 0xe0, // USAGE_MINIMUM (224)
+		0x29, 0xe7, // USAGE_MAXIMUM (231)
+		0x15, 0x00, // LOGICAL_MINIMUM (0)
+		0x25, 0x01, // LOGICAL_MAXIMUM (1) #20
+		0x81, 0x02, // INPUT (Data,Variable,Absolute)
+		0x95, 0x01, // REPORT_COUNT (1)
+		0x75, 0x08, // REPORT_SIZE (8)
+		0x81, 0x03, // INPUT (Constant)
+		0x95, 0x05, // REPORT_COUNT (5) #30
+		0x75, 0x01, // REPORT_SIZE (1)
+		0x05, 0x08, // USAGE_PAGE (LEDs)
+		0x19, 0x01, // USAGE_MINIMUM (1)
+		0x29, 0x05, // USAGE_MAXIMUM (5)
+		0x91, 0x02, // OUTPUT (Data,Variable,Absolute) #40
+		0x95, 0x01, // REPORT_COUNT (1)
+		0x75, 0x03, // REPORT_SIZE (3)
+		0x91, 0x03, // OUTPUT (Constant)
+		0x95, 0x06, // REPORT_COUNT (6)
+		0x75, 0x08, // REPORT_SIZE (8) #50
+		0x15, 0x00, // LOGICAL_MINIMUM (0)
+		0x25, 0xff, // LOGICAL_MAXIMUM (255)
+		0x05, 0x07, // USAGE_PAGE (Key Codes)
+		0x19, 0x00, // USAGE_MINIMUM (0)
+		0x29, 0xff, // USAGE_MAXIMUM (255) #60
+		0x81, 0x00, // INPUT (Data,Array)
+		0xc0, // END_COLLECTION #63
 };
 
 /**
