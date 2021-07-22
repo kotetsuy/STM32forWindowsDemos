@@ -46,7 +46,7 @@ TIM_HandleTypeDef htim4;
 
 /* USER CODE BEGIN PV */
 float32_t thetas[] =
-	{0, PI/4.0f, PI/2.0f, PI*3.0f/4.0f, PI,
+	{0.0f, PI/4.0f, PI/2.0f, PI*3.0f/4.0f, PI,
 	PI*5.0f/4.0f, PI*3.0f/2.0f, PI*7.0f/4.0f};
 /* USER CODE END PV */
 
